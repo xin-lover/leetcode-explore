@@ -75,7 +75,6 @@ int maxProfitAssignment2(vector<int>& difficulty, vector<int>& profit, vector<in
     for(int i=0;i<worker.size();++i)
     {
         res+=states[worker[i]];
-        printf("i:%d %d\n",worker[i],states[worker[i]]);
     }
 
     return res;
