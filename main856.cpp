@@ -45,6 +45,7 @@ int scoreOfParentheses(string S) {
     return res;
 }
 
+//这个思路很巧妙，也就是记录当前的括号最后对应的值，被嵌套的括号数值最后乘以2
 int scoreOfParentheses2(string S) {
     int length=S.length();
     int sum=0;
@@ -64,7 +65,7 @@ int scoreOfParentheses2(string S) {
         }
         else if(S[i]==')')
         {
-                if(S[i-1]=='(')
+            if(S[i-1]=='(')
             {
                     sum+=n;
             }
