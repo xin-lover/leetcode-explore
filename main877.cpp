@@ -7,7 +7,6 @@ using namespace std;
 
 int stoneGame(vector<int>& piles,vector<vector<int>>& dp, int sum,int start,int end)
 {
-    printf("%d %d\n",start,end);
     if(start == end)
     {
         return piles[start];
@@ -39,6 +38,11 @@ bool stoneGame(vector<int>& piles) {
     return p > sum - p;
 
 
+}
+
+bool stoneGame2(vector<int>& piles) {
+    //永远是第一个人赢
+    return true;
 }
 
 int main()

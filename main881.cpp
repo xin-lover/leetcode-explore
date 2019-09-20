@@ -35,6 +35,8 @@ int numRescueBoats(vector<int>& people, int limit) {
 
     return res;
 }
+
+//优化排序
 int numRescueBoats2(vector<int>& people, int limit) 
 {
     int lenth = people.size(), num = 0;
@@ -56,11 +58,6 @@ int numRescueBoats2(vector<int>& people, int limit)
             k++;
         }
     }
-    for(auto a : people)
-    {
-        printf("%d ",a);
-    }
-    printf("\n");
 
     int cur = 0;
     for (int i = lenth - 1; i >= cur; i--) {
