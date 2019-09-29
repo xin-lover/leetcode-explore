@@ -54,11 +54,11 @@ int smallestRangeII(vector<int>& A, int K) {
 
 int main()
 {
-    vector<int> A = {0,10};
+    vector<int> A = {0,10}; //6
     printf("%d\n",smallestRangeII(A,2));
-    A = {1};
+    A = {1};//0
     printf("%d\n",smallestRangeII(A,2));
-    A = {1,3,6};
+    A = {1,3,6}; //3
     printf("%d\n",smallestRangeII(A,3));
     A = {7,8,8,5,2};//5
     printf("%d\n",smallestRangeII(A,4));
