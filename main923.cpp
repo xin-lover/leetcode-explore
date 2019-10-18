@@ -6,6 +6,37 @@
 
 using namespace std;
 
+
+//求两数之和的双指针法
+
+int towSum(vector<int>& A, int target)
+{
+    int i=0,j=A.size()-1;
+    int res = 0;
+    while(i < j)
+    {
+        if(A[i] + A[j] < target)
+        {
+            ++i;
+        }
+        else if(A[i] + A[j] > target)
+        {
+            --j;
+        }
+        else
+        {
+            ++res;
+            ++i;
+            --j;
+        }
+    }
+
+    return res;
+}
+
+//三数之和可以用三指针法，先排序，然后固定i，则新的target=target-A[i],就退化为两数之和了,因为有重复元素的情况
+//特殊处理即可
+
 int threeSumMulti(vector<int>& A, int target) {
     //思路：查看示例，发现有很多的重复数字，所以重复数字我们需要改变一下，记录其次数
     //先确定第一第二个数，然后找第三个数
@@ -18,7 +49,7 @@ int threeSumMulti(vector<int>& A, int target) {
     }
 
     long long res =0;
-    vector<bool> iflags(nums.size(),true);
+    vector<bool> iflags(nums.size(),true);  //其实可以不用标记，我们这里保证i < j < k即可，因为j>i,所以只需要保证t > j即可,但要处理t==i和t==j的情况
     for(int i=0;i<nums.size();++i)
     {
         if(nums[i] == 0)
