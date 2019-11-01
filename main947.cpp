@@ -96,9 +96,7 @@ int removeStones2(vector<vector<int>>& stones) {
                 k = groups[k];
             }
             groups[k] = j;
-            printf("cc:%d to %d\n",colFlags[col],j);
         }
-        printf("row:%d col:%d group:%d %d\n",row,col,rowFlags[row],colFlags[col]);
     }
 
     int res = 0;

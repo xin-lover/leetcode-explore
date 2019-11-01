@@ -51,14 +51,14 @@ int shortestBridge(vector<vector<int>>& A) {
         }
     }
 
-    for(int i=0;i<A.size();++i)
-    {
-        for(int j=0;j<A[0].size();++j)
-        {
-            printf("%d ",A[i][j]);
-        }
-        printf("\n");
-    }
+    // for(int i=0;i<A.size();++i)
+    // {
+    //     for(int j=0;j<A[0].size();++j)
+    //     {
+    //         printf("%d ",A[i][j]);
+    //     }
+    //     printf("\n");
+    // }
 
     int len = A.size() + A[0].size();
     int num = 2;
@@ -96,16 +96,6 @@ int shortestBridge(vector<vector<int>>& A) {
         num = -k;
     }
 
-    printf("------------\n\n");
-    for(int i=0;i<A.size();++i)
-    {
-        for(int j=0;j<A[0].size();++j)
-        {
-            printf("%d ",A[i][j]);
-        }
-        printf("\n");
-    }
-    
     return len;
 }
 

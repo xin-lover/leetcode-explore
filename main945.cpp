@@ -96,6 +96,29 @@ int minIncrementForUnique3(vector<int>& A) {
     return res;
 }
 
+//排序的思路优化：还是使用上面的优化方法，遇到重复的x，操作数-x，然后把重复数插入空闲位置
+//与map思路一致，但因为不用map，性能可能高一些
+//    public int minIncrementForUnique(int[] A) {
+//         Arrays.sort(A);
+//         int ans = 0, taken = 0;
+
+//         for (int i = 1; i < A.length; ++i) {
+//             if (A[i-1] == A[i]) {
+//                 taken++;
+//                 ans -= A[i];
+//             } else {
+//                 int give = Math.min(taken, A[i] - A[i-1] - 1);
+//                 ans += give * (give + 1) / 2 + give * A[i-1];
+//                 taken -= give;
+//             }
+//         }
+
+//         if (A.length > 0)
+//             ans += taken * (taken + 1) / 2 + taken * A[A.length - 1];
+
+//         return ans;
+//     }
+
 int main()
 {
     vector<int> v = {1,2,2};
