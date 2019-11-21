@@ -121,7 +121,7 @@ int sumSubarrayMins2(vector<int>& A) {
 
 int sumSubarrayMins3(vector<int>& A) {
     //思路：计算出所有以A[i]为最小元素的子序列也就是存在j<=i<=k,
-    //A[j],A[j+1] ……<=A[i];
+    //A[j],A[j+1] ……>=A[i];
     //A[i+1],A[i+2]……A[k]>=A[i]
     //那么包含A[i]的子序列个数就是(i-j+1) * (k-i+1)
 
