@@ -26,7 +26,6 @@ vector<int> pancakeSort(vector<int>& A) {
             if(A[i] == k)
             {
                 seq = i;
-        printf("k:%d seq:%d\n",k,seq);
                 break;
             }
         }
