@@ -19,6 +19,7 @@ int brokenCalc(int X, int Y) {
     //也就是说如果f(x,z+1)较小，那么对于z完全可以先到z+1再减1到达z，那这样f(x,z)=f(x,z+1)+1
     //所以对于y为奇数，我们就直接求f(x,y+1)即可
     //对于偶数，我们的选择就是除2了，减1的效率肯定不如除2，如此递归，直到y=(x-m)*2或y=x*2-m的情况出现,也就是y<x*2
+    //这个条件还可以再进一步，也就是y>x的时候，都是如上操作
 
     printf("%d %d\n",X,Y);
     if(X >= Y)
@@ -28,7 +29,7 @@ int brokenCalc(int X, int Y) {
 
     if(Y < X * 2)
     {
-        return min(X - Y/2,X*2-Y)+1;
+        return min(X - Y/2,X*2-Y)+1;//这里可以再深入一步，X > Y时， return X-Y,也就是去掉这一步
     }
 
     if(Y&1)

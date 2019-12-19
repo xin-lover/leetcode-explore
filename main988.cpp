@@ -124,7 +124,6 @@ void smallestFromLeaf2(TreeNode* root,vector<int>& path,vector<int>& minPath)
             if(minPath[minPath.size()-1-i] > path[path.size()-1-i])
             {
                 minPath = path;
-                printf("i:%d minval:%d\n",i,minPath[minPath.size()-1-i]);
             }
             break;
         }
