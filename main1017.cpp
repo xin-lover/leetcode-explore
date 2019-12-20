@@ -72,7 +72,9 @@ string baseNeg2(int N) {
 
 }
 
+//通过数学推导可以得到+K/-K进制的通用转化法
 // 无论K是正数还是负数都支持（只支持-10～10进制，因为更高进制需要引入字母）
+//这个的思路余商向上取整是一个思路
 vector<int> baseK(int N, int K) {
     if (N == 0) return {0};
     vector<int> res;
