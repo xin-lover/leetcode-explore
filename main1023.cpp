@@ -54,6 +54,10 @@ vector<bool> camelMatch(vector<string>& queries, string pattern) {
     return res;
 }
 
+vector<bool> camelMatch2(vector<string>& queries, string pattern) 
+
+}
+
 int main()
 {
     vector<string> queries = {"FooBar","FooBarTest","FootBall","FrameBuffer","ForceFeedBack"};
