@@ -47,17 +47,53 @@ int minScoreTriangulation(vector<int>& A) {
     return sum;
 }
 
-int minScoreTriangulation2(vector<int>& A,int start,int end) {
-    
-    //start和end相连且最小，所以找start到end之间的最小值切分即可
-    int mn = start+1;
-    for(int i=start+2;i<A.size();++i)
+int mt2(vector<int>& A)
+{
+    if(A.size() < 3)
+    {
+        return 0;
+    }
+
+    if(A.size() == 3)
+    {
+        return A[0]*A[1]*A[2];
+    }
+
+    int mn = 2;
+    for(int i=3;i<A.size()-1;++i)
     {
         if(A[i] < A[mn])
         {
             mn = i;
         }
     }
+
+    if(A[0] * A[mn] <= A[1]*A.back())
+    {
+        vector<int> B,C;
+        for(int i=0;i<=mn;++i)
+        {
+            B.push_back(A[i]);
+        }
+        
+        C.push_back(A[0]);
+        for(int i=mn;i<A.size();++i)
+        {
+            C.push_back(A[i]);
+        }
+
+        return mt2(B) + mt2(C);
+    }
+    else
+    {
+        vector<int> B;
+        for(int i=1;i<A.size();++i)
+        {
+            B.push_back(A[i]);
+        }
+        return A[0]*A[1]*A.back() + mt2(B); 
+    }
+    
 
 }
 
@@ -70,13 +106,62 @@ int minScoreTriangulation2(vector<int>& A) {
     //所以贪心策略不行
     //采用分治，如何把A分成两部分？
     //选择乘积最小但不相连的两个点
+
+    //先把A重新排列，让第一个元素最小，然后接下来在不与第一个点相连的点中选择一个点与第一个点相连，从而分为两个部分
+    //问题：有重复元素时有问题，也就是两个元素都是最小值的时候，不一定是第一个最小值能得出最小结果
+    //但其实只会有两种情况，因为第一个节点最小，而我们找的又是除了n-1,0,1之外的所有节点的最小值，所以可能比这条边小的只有n-1,1这条边
+    //还是不行，考虑[1,2,5,2]
+
+    int n = A.size();
+    int mn = 0;
+    for(int i=0;i<A.size();++i)
+    {
+        if(A[i] < A[mn])
+        {
+            mn = i;
+        }
+    }
+
+    vector<int> B;
+    for(int i=0;i<n;++i)
+    {
+        B.push_back(A[(mn+i)%n]);
+    }
+
+    
+    return mt2(B);
+}
+
+int minScoreTriangulation3(vector<int>& A) {
+    //思路：动归,dp[i][j]表示第i个角到第j个角的最小剖分
+    //那么dp[i][j] = min(dp[i][j],dp[i][k]+dp[k][j]+A[i]*A[j]*A[k])
+
+    int n = A.size();
+    vector<vector<int>> dp(n,vector<int>(n,INT_MAX));
+    for(int i=0;i<n;++i)
+    {
+        dp[i][(i+1)%n] = 0; //相邻点
+    }
+    for(int i=2;i<n;++i)
+    {
+        for(int j=0;j+i<n;++j)
+        {
+            for(int k=1;k<i;++k)
+            {
+                dp[j][j+i] = min(dp[j][j+i],dp[j][j+k] + dp[j+k][j+i] + A[j]*A[j+k]*A[j+i]);
+            }
+        }
+    }
+
+    return dp[0][n-1];
 }
 
 int main()
 {
     vector<int> A = {1,2,3};//6
-    A = {3,7,4,5}; //144
+    // A = {3,7,4,5}; //144
     // A = {1,3,1,4,1,5}; //13
-    printf("%d\n",minScoreTriangulation(A));
+    // A = {3,7,4,5}; //144
+    printf("%d\n",minScoreTriangulation3(A));
     return 0;
 }
