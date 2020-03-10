@@ -260,6 +260,7 @@ void PrintTree(TreeNode* node)
     }
 }
 
+//这里使用的是非递归，使用递归应该会更简洁
 
 int main()
 {
