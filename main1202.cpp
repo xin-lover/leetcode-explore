@@ -92,6 +92,15 @@ int findRoot(vector<int>& flags,int v)
         tmp = flags[tmp];
     }
 
+    //压缩路径  //这一步很关键，因为链可能很长
+    int t=v;
+    while(flags[t] >= 0)
+    {
+        int tt = flags[t];
+        flags[t] = tmp;
+        t = tt;
+    }
+
     return tmp;
 }
 
@@ -159,6 +168,9 @@ string smallestStringWithSwaps2(string s, vector<vector<int>>& pairs) {
 
     return res;
 }
+
+//另一种并查集思路，先分集合，然后把集合中的字符进行统计，每次抛出集合最小字符
+
 int main()
 {
     string s = "dcab";
