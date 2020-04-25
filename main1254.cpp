@@ -26,6 +26,7 @@ void dfs(vector<vector<int>>& grid,int x,int y,int oldflag,int newflag)
 int closedIsland(vector<vector<int>>& grid) {
     //思路：使用dfs+标记即可
     //包含数组边缘的不算岛屿,那么简单的做法就是再从边缘dfs，标记这些区域
+    //不多遍dfs，可以让dfs返回是否到数组边缘
 
     int res = 0;
     for(int i=0;i<grid.size();++i)
