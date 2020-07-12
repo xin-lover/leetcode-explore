@@ -23,16 +23,16 @@ vector<vector<string>> displayTable(vector<vector<string>>& orders) {
         tableCards[stoi(orders[i][1])][orders[i][2]]++;
     }
 
-    for(auto a : tableCards)
-    {
-        printf("%d \n",a.first);
-        for(auto b : a.second)
-        {
-            printf("%s %d\n",b.first.c_str(),b.second);
-        }
-        printf("\n");
-    }
-    printf("\n");
+    // for(auto a : tableCards)
+    // {
+    //     printf("%d \n",a.first);
+    //     for(auto b : a.second)
+    //     {
+    //         printf("%s %d\n",b.first.c_str(),b.second);
+    //     }
+    //     printf("\n");
+    // }
+    // printf("\n");
 
     vector<vector<string>> res(tableCards.size()+1,vector<string>(um.size()+1,"0"));
     res[0][0] = "Table";
