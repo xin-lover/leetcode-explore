@@ -2,6 +2,7 @@
 
 #include <cstdio>
 #include <vector>
+#include <stack>
 
 using namespace std;
 
@@ -111,7 +112,7 @@ int numSubmat3(vector<vector<int>>& mat) {
     int ans = 0;
     for (int j = 0; j < m; ++j) { 
         int i = 0; 
-        stack<pair<int, int> > Q; 
+        stack<pair<int, int>> Q; 
         int sum = 0; 
         while (i <= n - 1) { 
             int height = 1; 
